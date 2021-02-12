@@ -1,0 +1,27 @@
+Panquecas
+Huevo Duro
+Huevo Frito
+Avena
+Sandwich
+Sandwich de Crema de Maní
+Panquecas de Avena
+Galletas con Leche
+Atún con Galleta Salada
+
+Salmorejo
+Gazpacho
+Ajoblanco
+Vichyssoise
+Sopa de Cebolla
+Crema de Auyama
+
+Nuggets de Pollo
+Pollo al ajillo
+Merluza Empanada
+Escalopina al Limón
+Torta de Verduras horneadas
+Carne Molida
+Pasta con Boloñesa
+Pasta con Amatriciana
+Chili con Carne
+Tabule de Lentejas
