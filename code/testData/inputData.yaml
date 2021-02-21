@@ -1,0 +1,167 @@
+# Format: 
+# --------
+#
+# <foodName>: 
+#   ingr:
+#     - <ingredient1>: <quantity> [<unit>] (or use 'null' if it doesn't apply/isn't needed)
+#     - <ingredient2>: ...
+#     - ...
+#   schedule:
+#     - b: <yes/no> (breakfast)
+#     - l: <yes/no> (lunch)
+#     - d: <yes/no> (dinner)
+#  isUnique: <yes/no>
+
+# BREAKFASTS / DINNER
+- panqueca:
+    ingr:
+      - harina de trigo: 250 gr
+      - leche: 250 ml
+      - huevo: 1
+      - azucar: null
+      - miel: null
+      - mantequilla: null
+    schedule:
+      - b: yes
+      - l: no
+      - d: yes
+    isUnique: yes
+
+- corn flakes:
+    ingr:
+      - cereal corn flakes: 250 gr
+      - leche: 250 ml
+    schedule:
+      - b: yes
+      - l: no
+      - d: yes
+    isUnique: yes
+
+- huevo frito:
+    ingr:
+      - huevo: 2
+      - sal: null
+      - especias: null
+    schedule:
+      - b: yes
+      - l: no
+      - d: no
+    isUnique: no
+
+- huevo frito con bacon:
+    ingr:
+      - huevo: 2
+      - bacon: null
+    schedule:
+      - b: yes
+      - l: no
+      - d: yes
+    isUnique: yes
+
+- sandwich:
+    ingr:
+      - pan de sandwich: 4
+      - jamon: null
+      - queso: null
+    schedule:
+      - b: yes
+      - l: no
+      - d: yes
+    isUnique: yes
+
+- sandwich de mani:
+    ingr:
+      - pan de sandwich: 4
+      - crema de mani: null
+    schedule:
+      - b: yes
+      - l: no
+      - d: yes
+    isUnique: yes
+
+- huevo duro:
+    ingr:
+      - huevo: 2
+    schedule:
+      - b: yes
+      - l: no
+      - d: no
+    isUnique: yes
+
+
+# LUNCH
+- hamburguesa:
+    ingr:
+      - carne de hamburguesa: 250 gr
+      - pan de hamburguesa: 2
+      - cebolla: null
+      - ensalada: null
+      - salsas varias: null
+    schedule:
+      - b: no
+      - l: yes
+      - d: yes
+    isUnique: yes
+
+- tabule de lentejas:
+    ingr:
+      - cebolla: 0.5 
+      - tomate: 1
+      - perejil: null
+      - hierbabuena: null
+      - queso feta: null
+      - zaatar: null
+      - sal: null
+      - aceite de oliva: 3 cucharadas
+      - lenteja: 1 taza
+    schedule:
+      - b: no
+      - l: yes
+      - d: yes
+    isUnique: yes
+
+- crema de auyama:
+    ingr:
+      - crema de auyama: 250 ml
+    schedule:
+      - b: no
+      - l: yes
+      - d: no
+    isUnique: no
+
+- gazpacho:
+    ingr:
+      - gazpacho: 250 ml
+    schedule:
+      - b: no
+      - l: yes
+      - d: no
+    isUnique: no
+
+- pollo:
+    ingr:
+      - pollo: 250 gr
+    schedule:
+      - b: no
+      - l: yes
+      - d: yes
+    isUnique: no
+
+- pollo al limon:
+    ingr:
+      - pollo: 250 gr
+      - jugo de limon: null
+    schedule:
+      - b: no
+      - l: yes
+      - d: yes
+    isUnique: no
+
+- ensalada:
+    ingr:
+      - ensalada: 250 gr
+    schedule:
+      - b: no
+      - l: yes
+      - d: yes
+    isUnique: no
