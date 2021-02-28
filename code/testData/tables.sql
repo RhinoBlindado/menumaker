@@ -9,20 +9,16 @@ CREATE TABLE ingredient
 
 CREATE TABLE food
 (
-    idFood VARCHAR2(64) PRIMARY KEY,
-    nameFood VARCHAR2(32),
-    isUniquePlate BOOLEAN NOT NULL CHECK(isUniquePlate IN (0,1)),
-    /*
-        timeOfDay has to be read as a binary value. It defines when a food is desired to be eaten. 
-        The format is B L D. B is the breakfast bit, L the lunch bit and D the dinner bit.
+    idFood      VARCHAR2(64) PRIMARY KEY,
+    nameFood    VARCHAR2(32),
+    
+    isUniquePlate BOOLEAN NOT NULL CHECK (isUniquePlate IN (0,1)),
 
-        Example:
-        B L D
-        0 0 1 -> This food is only for dinner time
-        1 0 1 -> This food can be had as breakfast or dinner.
-    */
-    timeOfDay INTEGER NOT NULL CHECK(timeOfDay BETWEEN 1 AND 7),
-    priceFood FLOAT
+    breakfast   BOOLEAN CHECK (breakfast IN (0,1)),
+    lunch       BOOLEAN CHECK (lunch IN (0,1)),
+    dinner      BOOLEAN CHECK (dinner IN (0,1)),
+
+    priceFood   FLOAT
 );
 
 CREATE TABLE twoTimes

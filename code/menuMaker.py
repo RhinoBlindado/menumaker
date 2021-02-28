@@ -18,6 +18,9 @@ import hashlib
 #   YAML Parser
 import yaml
 
+#   RNG
+import random
+
 
 # Functions
 def addPlates(conn):
@@ -77,8 +80,41 @@ def addPlates(conn):
     print("INSERTION DONE.")
 
 
-def genMenu():
-    print("...here....")
+def genMenuRand(conn):
+    print("---- GENERATING MENU ----")
+
+    cursor = conn.cursor()
+
+    breakfast = []
+    lunch = []
+    dinner =[]
+
+    foodQuery = "SELECT nameFood FROM food WHERE "
+
+    cursor.execute(foodQuery + " breakfast = 1")
+    breakfast = cursor.fetchall()
+
+    cursor.execute(foodQuery + " lunch = 1")
+    lunch = cursor.fetchall()
+
+    cursor.execute(foodQuery + " dinner = 1")
+    dinner = cursor.fetchall()
+
+    menuBreakfast = []
+    menuLunch = []
+    menuDinner = []
+
+    for i in range(0, 6):
+        menuBreakfast.append( breakfast[ random.randint(0, len(breakfast)-1) ][0] )
+        menuLunch.append( lunch[ random.randint(0, len(lunch)-1) ] [0])
+        menuDinner.append( dinner[ random.randint(0, len(dinner)-1) ] [0])
+
+    week = ['MON','TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
+
+    for i in range(0, 6):
+        print(week[i], menuBreakfast[i], menuLunch[i], menuDinner[i], sep='\t')
+
+
 
 def loadPlates(conn):
     print("---- LOADING PLATES FROM FILE ----")
@@ -114,13 +150,10 @@ def loadPlates(conn):
             lunchBit = schedule[1].get('l')
             dinneBit = schedule[2].get('d')
 
-            # These values concatenated indicate the schedule as a binary value; convert from 'True' to string '1' or '0', 
-            # concatenate and convert to base 10,
-            actTimeOfDay = int(str(int(breakBit)) + str(int(lunchBit)) + str(int(dinneBit)), 2)
-
-            cursor.execute('INSERT INTO food VALUES (?, ?, ?, ?, 0)', (actFoodID.hexdigest(), actFoodName, actUniqueFood, actTimeOfDay))
+            cursor.execute('INSERT INTO food VALUES (?, ?, ?, ?, ?, ?, 0)', (actFoodID.hexdigest(), actFoodName, actUniqueFood, breakBit, lunchBit, dinneBit))
 
             print("Food [", actFoodName, "] added.")
+
             # Add the ingredients to the database if not already there.
             ingr = itemDetails.get('ingr')
             for i in ingr:
@@ -152,10 +185,6 @@ def loadPlates(conn):
     conn.commit()
 
 
-
-
-
-
 #   MAIN FUNCTION
 def main():
 
@@ -175,16 +204,17 @@ def main():
             print("---MENU MAKER---")
             print("1- Add plate\n"+
             "2- Load plates from file\n"+
-            "3- Generate a menu\n"
+            "3- Generate a menu (Random Generation)\n"
             "0- Exit")
             case = int(input("> "))
 
             if case == 1:
-                addPlates(conn)
+               # addPlates(conn)
+               pass
             elif case == 2:
                 loadPlates(conn)
             elif case == 3:
-                genMenu()
+                genMenuRand(conn)
             elif case == 0:
                 running = False
                 conn.close()
